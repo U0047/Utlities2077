@@ -22,7 +22,8 @@ public func isPointInPolygon(point: Vector2, polygon: array<Vector2>) -> Bool {
     let j: Int32 = ArraySize(polygon) - 1;
     let isInside: Bool = false;
     while i < ArraySize(polygon) {
-        if (Equals(polygon[i].Y > point.Y, polygon[j].Y > point.Y) && point.X < (polygon[j].X - polygon[i].X) * (point.Y - polygon[i].Y) / (polygon[j].Y - polygon[i].Y) + polygon[i].X) {
+        let hasCrossedToOtherSideOfPolygon = (Equals(polygon[i].Y > point.Y, polygon[j].Y > point.Y) && point.X < (polygon[j].X - polygon[i].X) * (point.Y - polygon[i].Y) / (polygon[j].Y - polygon[i].Y) + polygon[i].X);
+        if hasCrossedToOtherSideOfPolygon {
             if Equals(isInside, true) {
                 isInside = false;
             } else {
