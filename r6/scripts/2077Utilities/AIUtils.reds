@@ -52,7 +52,6 @@ public func MountEntityToVehicleWithPriority(entID: EntityID,
 
     for seat in seatPriorityList {
         if !VehicleComponent.IsSlotOccupied(gi, vehID, seat.SeatName()) {
-            LogChannel(n"DEBUG", s"SEAT NOT MOUNTED, MOUNTING ENTITY TO PRIORITY SEAT: \(seat.SeatName())");
             let success = MountEntityToVehicle(entID,
                           vehID,
                           seat,

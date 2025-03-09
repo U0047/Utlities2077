@@ -118,17 +118,16 @@ public func GetVehicleSpawnPointGridSquare(v4: Vector4) -> array<Float> {
     let squares = GetVehicleSpawnPoints();
 
     if index < 0 {
-        LogChannel(n"DEBUG", s"OUT OF BOUNDS: NEGATIVE");
+        FTLogError(s"OUT OF BOUNDS: NEGATIVE");
         return squares[0];
     };
     if index > 3600 {
-        LogChannel(n"DEBUG", s"OUT OF BOUNDS: OVER MAX");
+        FTLogError(s"OUT OF BOUNDS: OVER MAX");
         return squares[3600];
     };
 
     return squares[index];
 };
-
 
 public func _GetVehicleSpawnPointSquareIndex(v4: Vector4) -> Int32 {
     let xy = _GetVehicleSpawnPointXYIndexes(v4);
@@ -161,12 +160,12 @@ public func _GetSurroundingVehicleSpawnPointSquareIndexes(v4: Vector4,
     let cols: array<Int32>;
     let i = -magnitude;
     while i <= magnitude {
-        LogChannel(n"DEBUG", s"ADDING COLUMN \(i)");
+        FTLogError(s"ADDING COLUMN \(i)");
         let j = -magnitude;
         while j <= magnitude {
             let square_index = _GetVehicleSpawnPointVectorizedIndex(x, y, i, j);
             ArrayPush(cols, square_index);
-            LogChannel(n"DEBUG", s"ADDING SQUARE \(square_index)");
+            FTLogError(s"ADDING SQUARE \(square_index)");
             j += 1;
         };
         i += 1;
@@ -230,12 +229,12 @@ public func findValidSpawnPointInCube(gi: GameInstance,
     //  larger sector size and smaller size = coarser grain search
 
     if deadzone >= size {
-        LogChannel(n"ERROR", s"[RandomCyberpsychos][ERROR]: deadzone (\(deadzone)) must be smaller than center size (\(size)!");
+        FTLogError(s"[RandomCyberpsychos][ERROR]: deadzone (\(deadzone)) must be smaller than center size (\(size)!");
         return new Vector4(0, 0, 0, 0);
     };
 
     if sector_size >= size - deadzone / 2.00 {
-        LogChannel(n"ERROR", s"[RandomCyberpsychos][ERROR]: sector_size (\(sector_size)) must be more than size - deadzone / 2.");
+        FTLogError(s"[RandomCyberpsychos][ERROR]: sector_size (\(sector_size)) must be more than size - deadzone / 2.");
         return new Vector4(0, 0, 0, 0);
     };
 

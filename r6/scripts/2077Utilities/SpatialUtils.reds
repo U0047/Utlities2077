@@ -233,8 +233,8 @@ public func isPointInAnyLoadedSecurityAreaVolume(point: Vector4,
         let zone_ent = GameInstance.FindEntityByID(gi, zone.entityID) as SecurityArea;
         if IsDefined(zone_ent) {
             let zone_type = zone_ent.GetController().GetPS().GetSecurityAreaType();
-            //LogChannel(n"DEBUG", s"ZONE CENTER: \(zone.position)");
-            //LogChannel(n"DEBUG", s"ZONE TYPE: \(zone_ent.GetController().GetPS().GetSecurityAreaType())");
+            //FTLog(s"ZONE CENTER: \(zone.position)");
+            //FTLog(s"ZONE TYPE: \(zone_ent.GetController().GetPS().GetSecurityAreaType())");
             if ArrayContains(zone_types, zone_type) 
             && isPointInSecurityAreaVolume(point, zone, check_height) {
                 return true;
@@ -290,9 +290,9 @@ public final static func HasSpaceInFrontOfPoint(queryPosition: Vector4,
     queryPosition.Z += boxDimensions.Z + groundClearance;
     queryPosition += boxDimensions.Y * queryDirection;
     boxOrientation = Quaternion.ToEulerAngles(Quaternion.BuildFromDirectionVector(queryDirection));
-    LogChannel(n"DEBUG", s"BOX POSITION: \(queryPosition)");
-    LogChannel(n"DEBUG", s"BOX EULER ORIENTATION: \(boxOrientation)");
-    LogChannel(n"DEBUG", s"BOX DIMENSIONS: \(boxDimensions)");
+    FTLog(s"BOX POSITION: \(queryPosition)");
+    FTLog(s"BOX EULER ORIENTATION: \(boxOrientation)");
+    FTLog(s"BOX DIMENSIONS: \(boxDimensions)");
     overlapSuccessStatic = GameInstance.GetSpatialQueriesSystem(GetGameInstance()).Overlap(boxDimensions, queryPosition, boxOrientation, n"Static", fitTestOvelap);
     overlapSuccessVehicle = GameInstance.GetSpatialQueriesSystem(GetGameInstance()).Overlap(boxDimensions, queryPosition, boxOrientation, n"Vehicle", fitTestOvelap);
     overlapSuccessDynamic = GameInstance.GetSpatialQueriesSystem(GetGameInstance()).Overlap(boxDimensions, queryPosition, boxOrientation, n"Dynamic", fitTestOvelap);
