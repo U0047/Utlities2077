@@ -193,11 +193,11 @@ public func isPointInAnyLoadedSecurityAreaRadius(point: Vector4,
             let zone_type = zone_ent.GetController().GetPS().GetSecurityAreaType();
             if ArrayContains(zone_types, zone_type)
             && isPointInSecurityAreaRadius(point, zone, check_height) {
-            return true;
+                return true;
             };
         };
-    return false;
     };
+    return false;
 };
 
 public func isPointInSecurityAreaRadius(point: Vector4,
