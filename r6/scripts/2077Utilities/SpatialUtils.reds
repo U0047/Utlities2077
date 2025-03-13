@@ -203,8 +203,8 @@ public func isPointInAnyLoadedSecurityAreaRadius(point: Vector4,
 public func isPointInSecurityAreaRadius(point: Vector4,
                                         zone: gameCookedAreaData,
                                         opt check_height: Bool) -> Bool {
-    let zone_pos_v3 = Vector4.Vector3To4(zone.position);
-    let dist_to_zone_sq = Vector4.DistanceSquared(point, zone_pos_v3);
+    let zone_pos_v4 = Vector4.Vector3To4(zone.position);
+    let dist_to_zone_sq = Vector4.DistanceSquared(point, zone_pos_v4);
     let is_inside_zone_radius = dist_to_zone_sq < zone.radius * zone.radius;
 
     if !is_inside_zone_radius {
