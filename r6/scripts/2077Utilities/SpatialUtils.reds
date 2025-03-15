@@ -290,9 +290,6 @@ public final static func HasSpaceInFrontOfPoint(queryPosition: Vector4,
     queryPosition.Z += boxDimensions.Z + groundClearance;
     queryPosition += boxDimensions.Y * queryDirection;
     boxOrientation = Quaternion.ToEulerAngles(Quaternion.BuildFromDirectionVector(queryDirection));
-    FTLog(s"BOX POSITION: \(queryPosition)");
-    FTLog(s"BOX EULER ORIENTATION: \(boxOrientation)");
-    FTLog(s"BOX DIMENSIONS: \(boxDimensions)");
     overlapSuccessStatic = GameInstance.GetSpatialQueriesSystem(GetGameInstance()).Overlap(boxDimensions, queryPosition, boxOrientation, n"Static", fitTestOvelap);
     overlapSuccessVehicle = GameInstance.GetSpatialQueriesSystem(GetGameInstance()).Overlap(boxDimensions, queryPosition, boxOrientation, n"Vehicle", fitTestOvelap);
     overlapSuccessDynamic = GameInstance.GetSpatialQueriesSystem(GetGameInstance()).Overlap(boxDimensions, queryPosition, boxOrientation, n"Dynamic", fitTestOvelap);

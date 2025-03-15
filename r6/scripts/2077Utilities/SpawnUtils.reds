@@ -160,12 +160,10 @@ public func _GetSurroundingVehicleSpawnPointSquareIndexes(v4: Vector4,
     let cols: array<Int32>;
     let i = -magnitude;
     while i <= magnitude {
-        FTLogError(s"ADDING COLUMN \(i)");
         let j = -magnitude;
         while j <= magnitude {
             let square_index = _GetVehicleSpawnPointVectorizedIndex(x, y, i, j);
             ArrayPush(cols, square_index);
-            FTLogError(s"ADDING SQUARE \(square_index)");
             j += 1;
         };
         i += 1;
