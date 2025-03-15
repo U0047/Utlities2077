@@ -39,10 +39,10 @@ public func isPointInPolygon(point: Vector2, polygon: array<Vector2>) -> Bool {
 };
 
 public func GetEntitiesInPrism(boundaries: array<Vector2>,
-                                 bottomZ: Float,
-                                 topZ: Float,
-                                 opt limit: Int32,
-                                 opt EntityFilters: array<CName>) -> array<wref<Entity>> {
+                               bottomZ: Float,
+                               topZ: Float,
+                               opt limit: Int32,
+                               opt EntityFilters: array<CName>) -> array<wref<Entity>> {
     let gi: GameInstance = GetGameInstance();
     let ents: array<ref<Entity>> = GameInstance.GetEntityList(gi);
     let out_ents: array<wref<Entity>>;
