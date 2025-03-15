@@ -227,12 +227,12 @@ public func findValidSpawnPointInCube(gi: GameInstance,
     //  larger sector size and smaller size = coarser grain search
 
     if deadzone >= size {
-        FTLogError(s"[RandomCyberpsychos][ERROR]: deadzone (\(deadzone)) must be smaller than center size (\(size)!");
+        FTLogError(s"[RandomCyberpsychos][ERROR]: DEADZONE (\(deadzone)) MUST BE SMALLER THAN CENTER SIZE (\(size)!");
         return new Vector4(0, 0, 0, 0);
     };
 
     if sector_size >= size - deadzone / 2.00 {
-        FTLogError(s"[RandomCyberpsychos][ERROR]: sector_size (\(sector_size)) must be more than size - deadzone / 2.");
+        FTLogError(s"[RandomCyberpsychos][ERROR]: sector_size (\(sector_size)) MUST BE MORE THAN size - deadzone / 2.");
         return new Vector4(0, 0, 0, 0);
     };
 
