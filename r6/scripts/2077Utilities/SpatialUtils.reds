@@ -38,15 +38,15 @@ public func isPointInPolygon(point: Vector2, polygon: array<Vector2>) -> Bool {
     return isInside;
 };
 
-public func GetEntitiesInPrism(boundaries: array<Vector2>,
+public func GetEntitiesInPrism(ents: script_ref<array<ref<Entity>>>,
+                               boundaries: array<Vector2>,
                                bottomZ: Float,
                                topZ: Float,
                                opt limit: Int32,
                                opt EntityFilters: array<CName>) -> array<wref<Entity>> {
     let gi: GameInstance = GetGameInstance();
-    let ents: array<ref<Entity>> = GameInstance.GetEntityList(gi);
     let out_ents: array<wref<Entity>>;
-    let total_ents = ArraySize(ents);
+    let total_ents = ArraySize(Deref(ents));
     let ent_pos: Vector4;
 
     if ArraySize(EntityFilters) == 0 {
@@ -57,8 +57,8 @@ public func GetEntitiesInPrism(boundaries: array<Vector2>,
     let ent: wref<Entity>;
     let ent_pos: Vector4;
     while i < total_ents && i < limit {
-        if IsDefined(ents[i]) {
-            ent = ents[i];
+        let ent: wref<Entity> = ents[i];
+        if IsDefined(ent) {
             ent_pos = ent.GetWorldPosition();
             if isPointInPolygon(Vector4.Vector4To2(ent_pos), boundaries)
             && ent_pos.Z > bottomZ
